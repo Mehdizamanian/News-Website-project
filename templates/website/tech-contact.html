@@ -40,12 +40,16 @@
                             <p>Fusce dapibus nunc quis quam tempor vestibulum sit amet consequat enim. Pellentesque blandit hendrerit placerat. Integertis non.</p>
                         </div>
                         <div class="col-lg-7">
-                            <form class="form-wrapper">
-                                <input type="text" class="form-control" placeholder="Your name">
-                                <input type="text" class="form-control" placeholder="Email address">
-                                <input type="text" class="form-control" placeholder="Phone">
-                                <input type="text" class="form-control" placeholder="Subject">
-                                <textarea class="form-control" placeholder="Your message"></textarea>
+
+
+
+                            <form class="form-wrapper" method="POST">
+                                {% csrf_token %}
+                                <input name="name" type="text" class="form-control" placeholder="Your name">
+                                <input name="email" type="email" class="form-control" placeholder="Email address">
+                                <input name="phone" type="Integertis" class="form-control" placeholder="Phone">
+                                <input name="subject" type="text" class="form-control" placeholder="Subject">
+                                <textarea name="message" type="message" class="form-control" placeholder="Your message"></textarea>
                                 <button type="submit" class="btn btn-primary">Send <i class="fa fa-envelope-open-o"></i></button>
                             </form>
                         </div>
@@ -56,6 +60,7 @@
     </div><!-- end container -->
 </section>
 
+{{form.as_p}}
 {% endblock content %}
 
 
