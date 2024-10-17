@@ -35,7 +35,7 @@
                               <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.id}} - {{new.title}}</a></h4>
                               <p>{{new.brif_description | truncatechars:150 }}</p>
                               <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
-                              <small><a href="tech-single.html" title="">{{new.created_time}}</a></small>
+                              <small><a href="{% url "news:date" date=new.created_time %}" title="">{{new.created_time}}</a></small>
                                <small><a href="{% url "news:author" author=new.author %}" >{{new.author}}</a></small>
                               <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>
                           </div><!-- end meta -->

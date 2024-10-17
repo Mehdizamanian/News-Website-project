@@ -8,6 +8,9 @@ def NewsListView(request,*args, **kwargs):
   if kwargs.get('author'):
     news=news.filter(author__username=kwargs['author'])
 
+  if kwargs.get('date'):
+    news=news.filter(created_time__icontains=kwargs['date'])
+
 
   search=request.GET.get('q')
   if search:
