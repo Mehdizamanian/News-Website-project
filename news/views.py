@@ -5,6 +5,9 @@ from .models import News
 def NewsListView(request,*args, **kwargs):
   news=News.objects.filter(active=True).order_by('-created_time')
 
+  if kwargs.get('author'):
+    news=news.filter(author__username=kwargs['author'])
+
 
   search=request.GET.get('q')
   if search:
