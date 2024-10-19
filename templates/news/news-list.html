@@ -24,7 +24,7 @@
                       <div class="blog-box row">
                           <div class="col-md-4">
                               <div class="post-media">
-                                  <a href="tech-single.html" title="">
+                                  <a href="{% url "news:detail" num=new.id %}" title="">
                                       <img style="width:300px;height:230px" src="{{new.image.url}}" alt="" class="img-fluid">
                                       <div class="hovereffect"></div>
                                   </a>
@@ -33,7 +33,7 @@
 
                           <div class="blog-meta big-meta col-md-8">
                               <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.id}} - {{new.title}}</a></h4>
-                              <p>{{new.brif_description | truncatechars:150 }}</p>
+                              <a href="{% url "news:detail" num=new.id %}"><p>{{new.brif_description | truncatechars:150 }}</p></a>
 
                               <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Info : </a></small>
                               <small><a href="{% url "news:date" date=new.created_time %}" title="">{{new.created_time}}</a></small>

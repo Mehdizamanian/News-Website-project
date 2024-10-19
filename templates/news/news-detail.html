@@ -12,7 +12,9 @@
       <div class="row">
           <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
               <div class="page-wrapper">
-                  <div class="blog-title-area text-center">
+
+
+                  {% comment %} <div class="blog-title-area text-center">
                       <ol class="breadcrumb hidden-xs-down">
                           <li class="breadcrumb-item"><a href="#">Home</a></li>
                           <li class="breadcrumb-item"><a href="#">Blog</a></li>
@@ -36,10 +38,12 @@
                               <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
                           </ul>
                       </div><!-- end post-sharing -->
-                  </div><!-- end title -->
+                  </div>
+                   {% endcomment %}
+                  <!-- end title -->
 
                   <div class="single-post-media">
-                      <img src="upload/tech_menu_08.jpg" alt="" class="img-fluid">
+                      <img style="width:100%;height:600px" src="{{new.image.url}}" alt="" class="img-fluid">
                   </div><!-- end media -->
 
                   <div class="blog-content">  
@@ -71,13 +75,37 @@
 
 
                   <div class="blog-title-area">
+                     <!-- category single page -->
                       <div class="tag-cloud-single">
-                          <span>Tags</span>
-                          <small><a href="#" title="">lifestyle</a></small>
-                          <small><a href="#" title="">colorful</a></small>
-                          <small><a href="#" title="">trending</a></small>
-                          <small><a href="#" title="">another tag</a></small>
-                      </div><!-- end meta -->
+                          <span>Category</span>
+
+                          {% for cat in new.category.all %}
+                          <small><a href=" {% url "news:category" category=cat.title %} ">{{cat.title}}</a></small>
+                          {% endfor %}
+
+                      </div>
+                      
+                      <!-- end category single page -->
+
+
+                     <!-- tags single page -->
+                     <div class="tag-cloud-single">
+                        <span>Tags not created yet </span>
+
+                        {% for cat in new.category.all %}
+                        <small><a href=" {% url "news:category" category=cat.title %} ">{{cat.title}}</a></small>
+                        {% endfor %}
+
+                    </div>
+                    
+                    <!-- end tags single page -->
+
+
+
+
+
+
+
 
                       <div class="post-sharing">
                           <ul class="list-inline">
@@ -100,7 +128,9 @@
 
                   <hr class="invis1">
 
-                  <div class="custombox prevnextpost clearfix">
+
+
+                  {% comment %} <div class="custombox prevnextpost clearfix">
                       <div class="row">
                           <div class="col-lg-6">
                               <div class="blog-list-widget">
@@ -130,10 +160,12 @@
                               </div>
                           </div><!-- end col -->
                       </div><!-- end row -->
-                  </div><!-- end author-box -->
+                  </div> {% endcomment %}
+                  
+                  <!-- end author-box -->
 
-                  <hr class="invis1">
-
+              
+{% comment %} 
                   <div class="custombox authorbox clearfix">
                       <h4 class="small-title">About author</h4>
                       <div class="row">
@@ -156,9 +188,12 @@
 
                           </div><!-- end col -->
                       </div><!-- end row -->
-                  </div><!-- end author-box -->
+                  </div> {% endcomment %}
+                  
+                  
+                  <!-- end author-box -->
 
-                  <hr class="invis1">
+                  {% comment %} <hr class="invis1">
 
                   <div class="custombox clearfix">
                       <h4 class="small-title">You may also like</h4>
@@ -199,38 +234,40 @@
                               </div><!-- end blog-box -->
                           </div><!-- end col -->
                       </div><!-- end row -->
-                  </div><!-- end custom-box -->
+                  </div>
+                   {% endcomment %}
+                  
+                  <!-- end custom-box -->
 
                   <hr class="invis1">
 
                   <div class="custombox clearfix">
-                      <h4 class="small-title">3 Comments</h4>
+                      <h4 class="small-title">{{comments.count}} comments</h4>
                       <div class="row">
                           <div class="col-lg-12">
+
                               <div class="comments-list">
-                                  <div class="media">
-                                      <a class="media-left" href="#">
-                                          <img src="upload/author.jpg" alt="" class="rounded-circle">
-                                      </a>
-                                      <div class="media-body">
-                                          <h4 class="media-heading user_name">Amanda Martines <small>5 days ago</small></h4>
-                                          <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag. Selfies iPhone Kickstarter, drinking vinegar jean.</p>
-                                          <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                                      </div>
-                                  </div>
-                                  <div class="media">
-                                      <a class="media-left" href="#">
-                                          <img src="upload/author_01.jpg" alt="" class="rounded-circle">
-                                      </a>
-                                      <div class="media-body">
 
-                                          <h4 class="media-heading user_name">Baltej Singh <small>5 days ago</small></h4>
+                                {% for comment in comments %}
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img src="upload/author.jpg" alt="" class="rounded-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading user_name">{{comment.name}} <small>{{comment.created_time}}</small></h4>
+                                        <p>{{comment.message}}</p>
+                                        <a href="#" class="btn btn-primary btn-sm">Reply</a>
+                                    </div>
+                                </div>
+                                
+                                {% endfor %}
 
-                                          <p>Drinking vinegar stumptown yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra selfies. Shorts fixie consequat flexitarian four loko tempor duis single-origin coffee. Banksy, elit small.</p>
 
-                                          <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                                      </div>
-                                  </div>
+
+
+
+
+{% comment %} 
                                   <div class="media last-child">
                                       <a class="media-left" href="#">
                                           <img src="upload/author_02.jpg" alt="" class="rounded-circle">
@@ -242,25 +279,45 @@
 
                                           <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                       </div>
-                                  </div>
+                                  </div> {% endcomment %}
+
+
                               </div>
                           </div><!-- end col -->
                       </div><!-- end row -->
-                  </div><!-- end custom-box -->
+                  </div>
+                  
+                  <!-- end custom-box -->
 
                   <hr class="invis1">
 
                   <div class="custombox clearfix">
-                      <h4 class="small-title">Leave a Reply</h4>
+                      <h4 class="small-title">Leave a comment &nbsp; &nbsp; :) </h4>
                       <div class="row">
                           <div class="col-lg-12">
-                              <form class="form-wrapper">
-                                  <input type="text" class="form-control" placeholder="Your name">
-                                  <input type="text" class="form-control" placeholder="Email address">
-                                  <input type="text" class="form-control" placeholder="Website">
-                                  <textarea class="form-control" placeholder="Your comment"></textarea>
-                                  <button type="submit" class="btn btn-primary">Submit Comment</button>
+
+                            {% comment %} single comment form {% endcomment %}
+
+
+                              <form method="POST" action="{% url "news:detail" num=new.id %}" class="form-wrapper">
+
+                                {% csrf_token %}
+                                
+                                
+                                 <input  value="{{new.id}}" type="hidden" name="news" type="text" class="form-control" placeholder="newsid">
+                                  <input name="name" type="text" class="form-control" placeholder="Your name">
+                                  <input name="email" type="email" class="form-control" placeholder="Email address">
+                                  <textarea name="message" class="form-control" placeholder="Your comment"></textarea>
+                                  
+                                  
+                                  
+                                  <button type="submit" class="btn btn-primary">send Comment</button>
                               </form>
+
+
+                              {% comment %} end single comment form {% endcomment %}
+
+
                           </div>
                       </div>
                   </div>

@@ -1,5 +1,9 @@
-from django.shortcuts import render
-from .models import News
+from django.shortcuts import render ,get_object_or_404, redirect
+from .models import News ,Comment
+from .forms import CommentForm
+
+from django.contrib import messages
+
 
 
 def NewsListView(request,*args, **kwargs):
@@ -29,7 +33,19 @@ def NewsListView(request,*args, **kwargs):
 
 
 def NewsDetailView(request,num):
-  new=News.objects.get(id=num)
-  return render(request,'news/news-detail.html',{'new':new})
+  new=get_object_or_404(News,id=num)
+  # new=News.objects.get(id=num)
+  comments = Comment.objects.filter(news=new, active=True)
+
+  form=CommentForm()
+
+  if request.method =='POST':
+    form=CommentForm(request.POST)
+    if form.is_valid():
+      form.save()
+      messages.success(request, "your comment added and would be published soon ... ")
+      return redirect('/')
+
+  return render(request,'news/news-detail.html',{'new':new , 'comments':comments ,'form':form})
 
 # Create your views here.
