@@ -1,3 +1,5 @@
+{% load news_tags %}
+
 <div class="widget">
   <h2 class="widget-title">All Categories </h2>
   <div class="blog-list-widget">
@@ -10,14 +12,25 @@
                   {% comment %} <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5> {% endcomment %}
 
                   {% for new in news %}
-                  {% for cat in new.category.all %}
+
+                   {% for cat in new.category.all %}
                
 
                   <small class="firstsmall"><a class="bg-orange" href="{% url "news:category" category=cat.title %}" title="">{{cat.title}}</a></small>     
 
-                  {% endfor %}
+                  {% endfor %} 
+
 
                   {% endfor %}
+
+
+
+{% comment %} 
+
+{% for cat in categories %}
+<small class="firstsmall"><a class="bg-orange" href="{% url "news:category" category=cat.title %}" title="">{{cat.title}}</a></small>     
+{% endfor %} {% endcomment %}
+
 
 
 

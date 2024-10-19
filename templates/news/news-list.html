@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load news_tags %}
 {% block content %}
 
 <section class="section">
@@ -100,26 +100,18 @@
           <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
               <div class="sidebar">
 
-{% comment %}                 
-                  <div class="widget">
-                      <div class="banner-spot clearfix">
-                          <div class="banner-img">
-                              <img src="upload/banner_07.jpg" alt="" class="img-fluid">
-                          </div><!-- end banner-img -->
-                      </div><!-- end banner -->
-                  </div><!-- end widget -->
-
- {% endcomment %}
-
 {% comment %} Side bar sections {% endcomment %}
 
 {% include "news/includes/news-search.html" %}
 <br/><br/>
-{% include "news/includes/news-recent.html" %}
+{% comment %} {% include "news/includes/news-recent.html" %} {% endcomment %}
+{% recent_post %}
 <hr/>
 {% include "news/includes/news-category.html" %}
+{% comment %} {% category %} {% endcomment %}
+{% comment %} {% category %} {% endcomment %}
 <hr/>
-{% include "news/includes/news-tag.html" %}
+{% include "news/includes/news-tag-file.html" %}
 
 
 {% comment %} end Side bar sections {% endcomment %}
