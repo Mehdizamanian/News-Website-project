@@ -25,7 +25,7 @@
                           <div class="col-md-4">
                               <div class="post-media">
                                   <a href="tech-single.html" title="">
-                                      <img src="{% static "upload/tech_blog_01.jpg" %}" alt="" class="img-fluid">
+                                      <img style="width:300px;height:230px" src="{{new.image.url}}" alt="" class="img-fluid">
                                       <div class="hovereffect"></div>
                                   </a>
                               </div><!-- end media -->
@@ -34,10 +34,28 @@
                           <div class="blog-meta big-meta col-md-8">
                               <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.id}} - {{new.title}}</a></h4>
                               <p>{{new.brif_description | truncatechars:150 }}</p>
-                              <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
+
+                              <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Info : </a></small>
                               <small><a href="{% url "news:date" date=new.created_time %}" title="">{{new.created_time}}</a></small>
                                <small><a href="{% url "news:author" author=new.author %}" >{{new.author}}</a></small>
                               <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>
+
+                            <br/>
+
+
+{% comment %} category section {% endcomment %}
+
+
+                              <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">CATEGORY</a></small>
+
+                              {% for cat in new.category.all %}
+                              <small><a href="{% url "news:category" category=cat.title %}" >{{cat.title}}</a></small>
+                              {% endfor %}
+                              
+
+{% comment %} end category section {% endcomment %}
+
+
                           </div><!-- end meta -->
                       </div><!-- end blog-box -->
 

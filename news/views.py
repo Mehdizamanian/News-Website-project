@@ -12,6 +12,10 @@ def NewsListView(request,*args, **kwargs):
     news=news.filter(created_time__icontains=kwargs['date'])
 
 
+  if kwargs.get('category'):
+    news=news.filter(category__title=kwargs['category'])
+
+
   search=request.GET.get('q')
   if search:
     news=news.filter(title__icontains=search)
