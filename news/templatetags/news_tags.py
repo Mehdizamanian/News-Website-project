@@ -8,7 +8,7 @@ register = template.Library()
 @register.simple_tag
 def news_counter():
   news=str(News.objects.filter(active=1).count())
-  return f"all News avaliable  :  {news} "
+  return f"all avaliable News   :  {news} "
 
 
 @register.filter
@@ -18,8 +18,8 @@ def upper(value):
 
 @register.inclusion_tag('news/includes/news-recent.html')
 def recent_news():
-  # news=News.objects.filter(active=1).order_by('-created_time')[0:2]  # didnt work by created 
-  news=News.objects.filter(active=1).order_by('-id')[0:2]
+    # news=News.objects.filter(active=True).order_by('-created_time')[0:2]  # didnt work by created_time 
+  news=News.objects.filter(active=True).order_by('-id')[0:2]  # 
   return {'news':news}
 
 
@@ -27,11 +27,7 @@ def recent_news():
 def lower(value):
   return value.lower()
 
-# @register.simple_tag
-# def show_news():
-#     news=News.objects.filter(active=True)
-#     newstostring=str(news)
-#     return f"all News({news})"
+
 
 
 @register.inclusion_tag('news/includes/news-category.html')
@@ -54,8 +50,3 @@ def recent_post():
   return {'news':news}
 
 
-
-# @register.inclusion_tag('news/includes/news-category.html')
-# def category():
-#   categories=Category.objects.all()
-#   return {'categories':categories}
