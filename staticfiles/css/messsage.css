@@ -1,0 +1,23 @@
+.message{
+  position: fixed;
+  top: -100px;
+  right: 0%;
+  left:0%;
+  color: rgb(250, 251, 250);
+  background-color: rgb(17, 208, 163);
+  animation-name: example;
+  animation-duration: 09s;
+  animation-delay: 0s;
+  height: 100px;
+  padding: 2%;
+}
+
+@keyframes example {
+  20%   {top:-5px;}
+  100%   {top:-300px;}
+
+
+  /* 50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}

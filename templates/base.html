@@ -40,16 +40,20 @@
     <!-- Version Tech CSS for this template -->
     <link href="{% static "css/version/tech.css" %}" rel="stylesheet">
 
+    <link href="{% static 'css/toastify.css' %}" rel="stylesheet">
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
   
+
+
 </head>
 <body>
 
-    {% if messages %}
+    {% comment %} {% if messages %}
     <ul class="messages">
         {% for message in messages %}
         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
@@ -58,7 +62,7 @@
         </li>
         {% endfor %}
     </ul>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
 
 
@@ -81,9 +85,12 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
                                 <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
                                     <li>
+
+
                                         <div class="container">
                                             <div class="mega-menu-content clearfix">
                                                 <div class="tab">
+                                                    
                                                     <button class="tablinks active" onclick="openCategory(event, 'cat01')">Science</button>
                                                     <button class="tablinks" onclick="openCategory(event, 'cat02')">Technology</button>
                                                     <button class="tablinks" onclick="openCategory(event, 'cat03')">Social Media</button>
@@ -433,16 +440,19 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            {% comment %} <li class="nav-item">
                                 <a class="nav-link" href="tech-category-01.html">Gadgets</a>
-                            </li>                   
-                            <li class="nav-item">
+                            </li>   {% endcomment %}
+
+                            {% comment %} <li class="nav-item">
                                 <a class="nav-link" href="tech-category-02.html">Videos</a>
-                            </li>
+                            </li> {% endcomment %}
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "website:contact" %}">Contact Us</a>
                             </li>
+
+                            {% include "message.html" %}
 
 
 
@@ -636,6 +646,7 @@
     <script src="{% static "js/tether.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/custom.js" %}"></script>
+    <script src="{% static 'js/toastify.js' %}"></script>
 
 </body>
 </html>
