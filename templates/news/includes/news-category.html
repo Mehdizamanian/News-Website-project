@@ -11,7 +11,8 @@
 
                   {% comment %} <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5> {% endcomment %}
 
-                  {% for new in news %}
+
+                  {% comment %} {% for new in news %}
 
                    {% for cat in new.category.all %}
                
@@ -21,7 +22,22 @@
                   {% endfor %} 
 
 
-                  {% endfor %}
+                  {% endfor %} {% endcomment %}
+
+                  <ul>
+
+                    {% for cat,num in categories_count.items %}
+                    <li>
+
+                        <a href="{% url "news:category" category=cat.title %}">{{cat}}:{{num}}</a>
+
+                    </li>
+                    
+                    {% endfor %}
+   
+                  </ul>
+
+
 
 
 

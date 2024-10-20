@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load news_tags %}
+{% load humanize %}
 {% block content %}
 
 <section class="section">
@@ -32,11 +33,11 @@
                           </div><!-- end col -->
 
                           <div class="blog-meta big-meta col-md-8">
-                              <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.id}} - {{new.title}}</a></h4>
+                              <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.id}} - {{new.title |upper }}</a></h4>
                               <a href="{% url "news:detail" num=new.id %}"><p>{{new.brif_description | truncatechars:150 }}</p></a>
 
                               <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Info : </a></small>
-                              <small><a href="{% url "news:date" date=new.created_time %}" title="">{{new.created_time}}</a></small>
+                              <small><a href="{% url "news:date" date=new.created_time %}" title="">{{new.created_time|naturalday }}</a></small>
                                <small><a href="{% url "news:author" author=new.author %}" >{{new.author}}</a></small>
                               <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>
 
@@ -105,9 +106,9 @@
 {% include "news/includes/news-search.html" %}
 <br/><br/>
 {% comment %} {% include "news/includes/news-recent.html" %} {% endcomment %}
-{% recent_post %}
+{% recent_news %}
 <hr/>
-{% include "news/includes/news-category.html" %}
+{% categories %}
 {% comment %} {% category %} {% endcomment %}
 {% comment %} {% category %} {% endcomment %}
 <hr/>
