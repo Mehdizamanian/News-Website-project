@@ -45,13 +45,25 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    {% include "messages.html" %}
+  
 </head>
 <body>
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 
 
+
+    
     <div id="wrapper">
         <header class="tech-header header">
             <div class="container-fluid">
@@ -427,20 +439,49 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="tech-category-02.html">Videos</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="tech-category-03.html">Reviews</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "website:contact" %}">Contact Us</a>
                             </li>
+
+
+
+                           
+
+
+
                         </ul>
                         <ul class="navbar-nav mr-2">
+
+                            {% if user.is_authenticated %}
+                            <li class="nav-item ml-3 " >
+                                {% comment %} <a style="float:right" class="nav-link " style="color:green" href="{% url "accounts:login" %}" ><li id="sabz">welcome dear <p>{{request.user}}</p><li></a>
+                                     {% endcomment %}
+                                      <h2>User ( {{request.user}} )</h2>
+                            </li> 
+
+                            <li class="nav-item " >
+                                <a style="float:right" class="nav-link " style="color:green" href="{% url "accounts:logout" %}" ><li id="sabz"> / Logout <li></a>
+                            </li>
+                            {% else %}
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "accounts:login" %}" >signup/Login</a>
+                            </li> 
+
+                            {% endif %}
+
+
+
+
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-rss"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-android"></i></a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-apple"></i></a>
                             </li>

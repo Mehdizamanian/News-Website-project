@@ -1,10 +1,13 @@
 {% load news_tags %}
-
+<hr/>
 <div class="widget">
-  <h2 class="widget-title">{% mycustom_tag %}</h2>
+  <h2 class="widget-title">{% news_counter %}</h2>
   <div class="trend-videos">
 
+  <hr/>
 
+
+  <h2 class="widget-title"> Recent news</h2>
 
 {% for new in news %}
 
@@ -32,3 +35,5 @@
       <!-- end blog-box -->
   </div><!-- end videos -->
 </div><!-- end widget -->
+
+

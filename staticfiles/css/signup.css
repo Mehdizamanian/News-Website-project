@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image:url(../images/4.jpg);
+  height: 100vh;
+  
+  
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 520px;
+  border: 1px solid #9C9C9C;
+  background-color: #282525;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+
+#sabz{
+  color: #18cc04 !important;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.ghermez{
+  color: #e10000 !important;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
