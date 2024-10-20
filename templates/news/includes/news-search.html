@@ -1,0 +1,7 @@
+{% load news_tags %}
+
+<form method="GET" action="{% url "news:news" %}">
+  <input  name='q' type="text" class="textbox" placeholder="Search">
+
+  <input title="Search" value="" type="submit" class="button">
+</form>

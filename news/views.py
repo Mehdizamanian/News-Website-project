@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 def NewsListView(request,*args, **kwargs):
-  news=News.objects.filter(active=True).order_by('-created_time')
+  news=News.objects.filter(active=True)
 
   if kwargs.get('author'):
     news=news.filter(author__username=kwargs['author'])
