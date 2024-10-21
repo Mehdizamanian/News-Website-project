@@ -1,0 +1,35 @@
+
+{% load static %}
+{% load news_tags %}
+
+
+
+<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+  <div style="border-radius: 15px;background-color:#ceceff;color:white" class="sidebar">
+
+{% comment %} Side bar sections {% endcomment %}
+<h2 style="border-radius:0px 15px 0px 15px;background-color:black;font-size:20px;height:50px;text-align:center;padding:5%" class="widget-title text-info">{% news_counter %}</h2>
+<br/>
+
+{% include "news/includes/news-search.html" %}
+<br/><br/>
+{% recent_news %}
+<hr style="background-color:black;border-width: 3px;" />
+
+
+
+{% comment %} {% include "news/includes/news-recent.html" %} {% endcomment %}
+
+{% categories %}
+<hr style="background-color:black;border-width: 3px;" />
+{% show_all_tags %}
+{% comment %} {% category %} {% endcomment %}
+{% comment %} {% category %} {% endcomment %}
+
+
+
+
+{% comment %} end Side bar sections {% endcomment %}
+
+
+

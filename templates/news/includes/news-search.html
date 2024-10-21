@@ -1,7 +1,62 @@
+
+{% load static %}
 {% load news_tags %}
 
-<form method="GET" action="{% url "news:news" %}">
+{% comment %} <form method="GET" action="{% url "news:news" %}">
   <input  name='q' type="text" class="textbox" placeholder="Search">
 
   <input title="Search" value="" type="submit" class="button">
-</form>
+</form> {% endcomment %}
+
+<div style="position:relative;left:0px;right:0px;">
+  <div class="search-wrapper active">
+    <div class="input-holder">
+
+      <form method="GET" action="{% url "news:news" %}">
+        <input name='q' type="text" class="search-input" placeholder="Type to search">
+        <button type="submit" class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+
+      </form> 
+
+    </div>
+    <span class="close" onclick="searchToggle(this, event);"></span>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script id="rendered-js">
+function searchToggle(obj, evt) {
+  var container = $(obj).closest('.search-wrapper');
+  if (!container.hasClass('active')) {
+    container.addClass('active');
+    evt.preventDefault();
+  } else
+  if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+    container.removeClass('active');
+    // clear input
+    container.find('.search-input').val('');
+  }
+}
+//# sourceURL=pen.js
+    </script>
+
+  
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+
+
+
+
+</div>
+
+
+
+
+
+
+{% comment %} 
+
+
+<form method="GET" action="{% url "news:news" %}" class="search-bar">
+  <input name='q' type="search" name="search" pattern=".*\S.*" required>
+  <button class="search-btn" type="submit">
+    <span>Search</span>
+  </button>
+</form> {% endcomment %}

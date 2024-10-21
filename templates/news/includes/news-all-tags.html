@@ -3,7 +3,7 @@
 
 
 <div class="widget">
-  <h2 class="widget-title">All tags </h2>
+  <h2 class="widget-title"  style="padding:10px 0px 0px 10px" >All tags </h2>
   
   <div class="blog-list-widget">
       <div class="list-group">
@@ -27,18 +27,18 @@
 
                   {% endfor %} {% endcomment %}
 
-                  <ul>
+                  <ul style="text-align:center">
 
                     {% for tag in tags%}
-                    <li>
+                    <li  style="display:inline">
 
-                        <a href="{% url "news:tag" tag=tag.title %}">{{tag.title}}</a>
+                        <a href="{% url "news:tag" tag=tag.title %}"># {{tag.title}} &nbsp; </a>
 
                     </li>
                     
                     {% endfor %}
    
-                  </ul>
+                  </uls>
 
 
 

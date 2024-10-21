@@ -42,7 +42,7 @@
     <link href="{% static "css/version/tech.css" %}" rel="stylesheet">
 
     <link href="{% static 'css/toastify.css' %}" rel="stylesheet">
-
+    <link href="{% static "css/searchform.css" %}"  rel="stylesheet" />
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -76,7 +76,11 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="tech-index.html"><img src="{% static "images/version/tech-logo.png" %}" alt=""></a>
+
+                    <a class="navbar-brand" href="tech-index.html">
+                        <img src="{% static "images/version/tech-logo.png" %}" alt=""> 
+                    
+                    </a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -100,11 +104,13 @@
   
                                                 </div>
 
+
+
                                                 <div class="tab-details clearfix">
                                                     <div id="cat01" class="tabcontent active">
                                                         <div class="row">
 
-                                                                {% banner_recent_news %}
+                                                                 {% banner_recent_news %}
 
                                                             
 
@@ -435,11 +441,11 @@
                             <li class="nav-item ml-3 " >
                                 {% comment %} <a style="float:right" class="nav-link " style="color:green" href="{% url "accounts:login" %}" ><li id="sabz">welcome dear <p>{{request.user}}</p><li></a>
                                      {% endcomment %}
-                                      <h2>User ( {{request.user}} )</h2>
+                                      <h2 style="display:inline ; font-size:20px;color:white" >User <span style="color:green">( {{request.user}} )</span> / </h2>
                             </li> 
 
                             <li class="nav-item " >
-                                <a style="float:right" class="nav-link " style="color:green" href="{% url "accounts:logout" %}" ><li id="sabz"> / Logout <li></a>
+                                <a style="float:right" class="nav-link "  href="{% url "accounts:logout" %}" ><p style="color:red;font-size:20px">  Logout </p></a>
                             </li>
                             {% else %}
 
@@ -453,7 +459,7 @@
 
 
 
-                            <li class="nav-item">
+                            {% comment %} <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-rss"></i></a>
                             </li>
                             <li class="nav-item">
@@ -462,7 +468,9 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fa fa-apple"></i></a>
-                            </li>
+                            </li> {% endcomment %}
+
+
                         </ul>
                     </div>
                 </nav>

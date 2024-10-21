@@ -331,29 +331,9 @@
               </div><!-- end page-wrapper -->
           </div><!-- end col -->
 
-          <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-              <div class="sidebar">
 
+{% include "news/includes/sidebar.html" %}
 
-
-
-                  <div class="widget">
-                    
-{% include "news/includes/news-search.html" %}
-<br/><br/>
-{% comment %} {% include "news/includes/news-recent.html" %} {% endcomment %}
-{% recent_news %}
-<hr/>
-{% categories %}
-{% comment %} {% category %} {% endcomment %}
-{% comment %} {% category %} {% endcomment %}
-<hr/>
-{% show_all_tags %}
-
-
-
-              </div><!-- end sidebar -->
-          </div><!-- end col -->
       </div><!-- end row -->
   </div><!-- end container -->
 </section>

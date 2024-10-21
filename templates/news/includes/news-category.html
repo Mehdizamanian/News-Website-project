@@ -4,7 +4,7 @@
 
 
 <div class="widget">
-  <h2 class="widget-title">All Categories </h2>
+  <h2 class="widget-title" style="padding:10px 0px 0px 10px">All Categories </h2>
   
   <div class="blog-list-widget">
       <div class="list-group">
@@ -31,7 +31,7 @@
                   <ul>
 
                     {% for cat,num in categories_count.items %}
-                    <li>
+                    <li style="text-align:center">
 
                         <a href="{% url "news:category" category=cat.title %}">{{cat}}:{{num}}</a>
 
