@@ -18,7 +18,6 @@ class News(models.Model):
   author=models.ForeignKey(user,on_delete=models.CASCADE,blank=False)
   category=models.ManyToManyField("Category")
   tag=models.ManyToManyField("Tag")
-  # fixing create and updated time
   # slug=
 
   def __str__(self) -> str:
