@@ -11,8 +11,8 @@ class News(models.Model):
   brif_description=models.TextField()
   description=models.TextField()
   image=models.ImageField(upload_to='news/images/',default='news/images/1.png')
-  created_time=models.DateField(auto_now=False, auto_now_add=True)
-  updated_time=models.DateField(auto_now=True, auto_now_add=False)
+  updated_time=models.DateTimeField(auto_now=True, auto_now_add=False)
+  created_time=models.DateTimeField(auto_now=False, auto_now_add=True)
   active=models.BooleanField(default=False)
   # relations
   author=models.ForeignKey(user,on_delete=models.CASCADE,blank=False)

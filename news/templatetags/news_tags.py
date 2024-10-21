@@ -18,8 +18,7 @@ def upper(value):
 
 @register.inclusion_tag('news/includes/news-recent.html')
 def recent_news():
-    # news=News.objects.filter(active=True).order_by('-created_time')[0:2]  # didnt work by created_time 
-  news=News.objects.filter(active=True).order_by('-id')[0:2]  # 
+  news=News.objects.filter(active=True).order_by('-created_time')[0:2]  
   return {'news':news}
 
 
