@@ -1,12 +1,13 @@
 from django.shortcuts import render ,get_object_or_404, redirect
 from .models import News ,Comment
 from .forms import CommentForm
-
 from django.contrib import messages
 
+from django.views.generic import ListView
 
 
-def NewsListView(request,*args, **kwargs):
+
+def news_list(request,*args, **kwargs):
   news=News.objects.filter(active=True).order_by('-created_time')
 
   if kwargs.get('author'):
@@ -34,7 +35,7 @@ def NewsListView(request,*args, **kwargs):
 
 
 
-def NewsDetailView(request,num):
+def news_detail(request,num):
   new=get_object_or_404(News,id=num)
   # new=News.objects.get(id=num)
   comments = Comment.objects.filter(news=new, active=True)
@@ -50,4 +51,21 @@ def NewsDetailView(request,num):
 
   return render(request,'news/news-detail.html',{'new':new , 'comments':comments ,'form':form})
 
-# Create your views here.
+
+
+
+
+# Admin dashboard
+
+class AdminPannel(ListView):
+  model=News
+  context_object_name='news'
+  template_name='news/admin-news/admin.html'
+
+  # def get_queryset(self):
+  #     news=News.objects.all()
+  #     return {'news':news}
+  
+
+
+  

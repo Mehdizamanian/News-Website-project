@@ -448,7 +448,10 @@
                             <li class="nav-item ml-3 " >
                                 {% comment %} <a style="float:right" class="nav-link " style="color:green" href="{% url "accounts:login" %}" ><li id="sabz">welcome dear <p>{{request.user}}</p><li></a>
                                      {% endcomment %}
-                                      <h2 style="display:inline ; font-size:20px;color:white" >User <span style="color:green">( {{request.user}} )</span> / </h2>
+                                     <a href="{% url "news:dashboard" %}"
+                                      <h2 style="display:inline ; font-size:20px;color:white" >
+                                        User <span style="color:green">( {{request.user}} )</span> /
+                                     </h2>
                             </li> 
 
                             <li class="nav-item " >
