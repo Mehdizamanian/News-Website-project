@@ -33,7 +33,7 @@
                           </div><!-- end col -->
 
                           <div class="blog-meta big-meta col-md-8">
-                              <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.id}} - {{new.title |upper }}</a></h4>
+                              <h4 style="padding-left:5%;background-color:#00A1E5;border-radius: 15px 50px;"><a href="{% url "news:detail" num=new.id %}" title="">{{new.title |upper }}</a></h4>
                               <a href="{% url "news:detail" num=new.id %}"><p>{{new.brif_description | truncatechars:150 }}</p></a>
 
                               <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Info : </a></small>
@@ -99,20 +99,28 @@
 
 
           <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-              <div class="sidebar">
+              <div style="border-radius: 15px;background-color:#ceceff;color:white" class="sidebar">
 
 {% comment %} Side bar sections {% endcomment %}
+<h2 style="border-radius:0px 15px 0px 15px;background-color:black;font-size:20px;height:50px;text-align:center;padding:5%" class="widget-title text-info">{% news_counter %}</h2>
+  
 
-{% include "news/includes/news-search.html" %}
-<br/><br/>
-{% comment %} {% include "news/includes/news-recent.html" %} {% endcomment %}
 {% recent_news %}
-<hr/>
+<hr style="background-color:black;border-width: 3px;" />
+{% include "news/includes/news-search.html" %}
+
+
+{% comment %} {% include "news/includes/news-recent.html" %} {% endcomment %}
+<hr style="background-color:black;border-width: 3px;" />
+
+<hr style="background-color:black;border-width: 3px;" />
 {% categories %}
-{% comment %} {% category %} {% endcomment %}
-{% comment %} {% category %} {% endcomment %}
-<hr/>
+<hr style="background-color:black;border-width: 3px;" />
 {% show_all_tags %}
+{% comment %} {% category %} {% endcomment %}
+{% comment %} {% category %} {% endcomment %}
+
+
 
 
 {% comment %} end Side bar sections {% endcomment %}

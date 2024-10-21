@@ -1,18 +1,16 @@
 {% load news_tags %}
-<hr/>
+
 <div class="widget">
-  <h2 class="widget-title">{% news_counter %}</h2>
-  <div class="trend-videos">
+  
+    <div class="trend-videos">
 
-  <hr/>
-
-
-  <h2 class="widget-title"> Recent news</h2>
+<h2 style="border-radius:0px 15px 0px 15px;background-color:green;font-size:20px;height:50px;text-align:center;padding:5%" class="widget-title text-white">Recent News</h2>
+  
 
 {% for new in news %}
 
 
-      <div class="blog-box">
+      <div class="blog-box bg-success" style="margin-top:-13px;">
           <div class="post-media">
               <a href="{% url "news:detail" num=new.id %}" title="">
                   <img src="{{new.image.url}}" alt="" class="img-fluid">
@@ -22,7 +20,7 @@
               </a>
           </div><!-- end media -->
           <div class="blog-meta">
-              <h4 style="text-align:center" ><a href="{% url "news:detail" num=new.id %}" title="">{{new.title}}</a></h4>
+              <h5 style="text-align:center;padding-buttom:10px" ><a href="{% url "news:detail" num=new.id %}" title="">{{new.title | truncatechars:25}}</a></h5>
           </div><!-- end meta -->
       </div><!-- end blog-box -->
 

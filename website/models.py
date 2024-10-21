@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 class Contact(models.Model):
   name=models.CharField(max_length=60)
@@ -7,7 +6,7 @@ class Contact(models.Model):
   phone=models.IntegerField()
   subject=models.CharField(max_length=200)
   message=models.TextField()
-  created_time=models.DateField(auto_now_add=False,default=timezone.now())
+  created_time=models.DateTimeField(auto_now=False, auto_now_add=True)
 
   def __str__(self):
     return self.email
