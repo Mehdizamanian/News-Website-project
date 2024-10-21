@@ -12,7 +12,7 @@ def login_view(request):
     user=authenticate(request,username=username,password=password)
     if user:
       login(request,user)
-      messages.success(request,'you logged in successfull')
+      messages.success(request,'you logged in successfully   &nbsp;&nbsp; &nbsp;   ')
       return redirect('/')
   else:
     form=AuthenticationForm #username #password
@@ -22,7 +22,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
   logout(request)
-  messages.success(request,'you logged out :(  ')
+  messages.success(request,'you logged out &nbsp;    &nbsp;   ')
   return redirect('/')
 
 
@@ -32,7 +32,7 @@ def signupview(request):
   if request.method=='POST':
     form=UserCreationForm(request.POST)
     if form.is_valid():
-      messages.success(request,'your account created successfully.now enter your username and password')
+      messages.success(request,'signup completed . </br> enter your username and password bellow . </br></br>')
       form.save()
       return redirect("accounts:login")
   else:    

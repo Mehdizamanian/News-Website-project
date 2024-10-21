@@ -1,5 +1,5 @@
 from django import template
-from ..models import News , Category
+from ..models import News , Category ,Tag
 
 
 register = template.Library()
@@ -50,3 +50,31 @@ def recent_post():
   return {'news':news}
 
 
+@register.inclusion_tag('news/includes/news-all-tags.html')
+def show_all_tags():
+  tags=Tag.objects.all()
+  return {'tags':tags}
+
+
+
+
+
+# Banner is for showing ctt on base.html
+
+@register.inclusion_tag('news/includes/news-category-banner.html')
+def category_banner():
+  categories=Category.objects.all()
+  return {'categories':categories}
+
+
+@register.inclusion_tag('news/includes/banner/news-banner-recentnews.html')
+def banner_recent_news():
+  news=News.objects.filter(active=True).order_by('-id')[0:3]
+  return {'news':news}
+
+
+
+@register.inclusion_tag('news/includes/banner/news-banner-preview.html')
+def banner_preview():
+  news=News.objects.filter(active=True).order_by('-id')[0:4]
+  return {'news':news}

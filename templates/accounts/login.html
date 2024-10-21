@@ -10,15 +10,9 @@
 <body>
 
 
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
 
 
+    {% include "message.html" %}
 
 
     <div id="login">
@@ -41,11 +35,11 @@
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                {% comment %} <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>{% endcomment %}<br> 
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                             </div>
                             <div id="register-link" class="text-right">
-                                <a href="{% url "accounts:signup" %}" class="text-info">Register here</a>
+                                <a href="{% url "accounts:signup" %}" class="text-info">Sign up </a>
                             </div>
                         </form>
 

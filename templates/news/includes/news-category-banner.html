@@ -1,0 +1,7 @@
+
+{% load news_tags %}
+{% for cat in categories %}
+<button class="tablinks" onclick="openCategory(event, 'cat01')"><a href="{% url "news:category" category=cat.title %}">{{cat.title}}</a></button>
+{% endfor %}
+
+

@@ -11,5 +11,6 @@ urlpatterns = [
     path('author/<author>/',NewsListView,name="author"),
     path('date/<date>/',NewsListView,name="date"),
     path('category/<category>/',NewsListView,name="category"),
+    path('tag/<tag>/',NewsListView,name="tag"),
     path('detail/<int:num>/', NewsDetailView,name="detail"),
 ]
