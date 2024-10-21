@@ -1,4 +1,5 @@
 {% load static %}
+{% load news_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,10 +80,14 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="tech-index.html">Home</a>
+                                <a class="nav-link" href=" {% url "news:news" %} ">News</a>
                             </li>
+
+
+
+
                             <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">categories</a>
                                 <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
                                     <li>
 
@@ -90,80 +95,23 @@
                                         <div class="container">
                                             <div class="mega-menu-content clearfix">
                                                 <div class="tab">
-                                                    
-                                                    <button class="tablinks active" onclick="openCategory(event, 'cat01')">Science</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat02')">Technology</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat03')">Social Media</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat04')">Car News</button>
-                                                    <button class="tablinks" onclick="openCategory(event, 'cat05')">Worldwide</button>
+                                                    {% category_banner %}
+                                                    <button class="tablinks active bg-yellow" onclick="openCategory(event, 'cat01')">Recent news </button>
+  
                                                 </div>
 
                                                 <div class="tab-details clearfix">
                                                     <div id="cat01" class="tabcontent active">
                                                         <div class="row">
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="tech-single.html" title="">
-                                                                            <img src="{% static "upload/tech_menu_01.jpg" %}" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <span class="menucat">Science</span>
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="tech-single.html" title="">Top 10+ care advice for your toenails</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
 
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="tech-single.html" title="">
-                                                                            <img src="{% static "upload/tech_menu_02.jpg" %}" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <span class="menucat">Science</span>
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="tech-single.html" title="">The secret of your beauty is handmade soap</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
+                                                                {% banner_recent_news %}
 
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="tech-single.html" title="">
-                                                                            <img src="{% static "upload/tech_menu_03.jpg" %}" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <span class="menucat">Science</span>
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="tech-single.html" title="">Benefits of face mask made from mud</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
+                                                            
 
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                <div class="blog-box">
-                                                                    <div class="post-media">
-                                                                        <a href="tech-single.html" title="">
-                                                                            <img src="{% static "upload/tech_menu_04.jpg" %}" alt="" class="img-fluid">
-                                                                            <div class="hovereffect">
-                                                                            </div><!-- end hover -->
-                                                                            <span class="menucat">Science</span>
-                                                                        </a>
-                                                                    </div><!-- end media -->
-                                                                    <div class="blog-meta">
-                                                                        <h4><a href="tech-single.html" title="">Relax with the unique warmth of candle flavor</a></h4>
-                                                                    </div><!-- end meta -->
-                                                                </div><!-- end blog-box -->
-                                                            </div>
+
+
+
+
                                                         </div><!-- end row -->
                                                     </div>
                                                     <div id="cat02" class="tabcontent">
@@ -434,12 +382,21 @@
                                                             </div>
                                                         </div><!-- end row -->
                                                     </div>
-                                                </div><!-- end tab-details -->
+                                                </div>
+                                                
+                                                
+                                                <!-- end tab-details -->
                                             </div><!-- end mega-menu-content -->
                                         </div>
+
                                     </li>
                                 </ul>
-                            </li>
+                            </li> 
+
+
+
+
+                            
                             {% comment %} <li class="nav-item">
                                 <a class="nav-link" href="tech-category-01.html">Gadgets</a>
                             </li>   {% endcomment %}
@@ -448,9 +405,20 @@
                                 <a class="nav-link" href="tech-category-02.html">Videos</a>
                             </li> {% endcomment %}
 
+
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "website:contact" %}">Contact Us</a>
                             </li>
+
+{% comment %} 
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "website:contact" %}">Signup</a>
+                                <a class="nav-link" href="{% url "website:contact" %}">Signup</a>
+                            </li> {% endcomment %}
+
+
+
 
                             {% include "message.html" %}
 
@@ -501,59 +469,14 @@
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
 
-        <section class="section first-section">
-            <div class="container-fluid">
-                <div class="masonry-blog clearfix">
-                    <div class="first-slot">
-                        <div class="masonry-box post-media">
-                             <img src="{% static "upload/tech_01.jpg" %}" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-orange"><a href="tech-category-01.html" title="">Technology</a></span>
-                                        <h4><a href="tech-single.html" title="">Say hello to real handmade office furniture! Clean & beautiful design</a></h4>
-                                        <small><a href="tech-single.html" title="">24 July, 2017</a></small>
-                                        <small><a href="tech-author.html" title="">by Amanda</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                            </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                    </div><!-- end first-side -->
 
-                    <div class="second-slot">
-                        <div class="masonry-box post-media">
-                             <img src="{% static "upload/tech_02.jpg" %}" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>
-                                        <h4><a href="tech-single.html" title="">Do not make mistakes when choosing web hosting</a></h4>
-                                        <small><a href="tech-single.html" title="">03 July, 2017</a></small>
-                                        <small><a href="tech-author.html" title="">by Jessica</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                             </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                    </div><!-- end second-side -->
+{% comment %} banner {% endcomment %}
+{% include "news/includes/banner.html" %}
 
-                    <div class="last-slot">
-                        <div class="masonry-box post-media">
-                             <img src="{% static "upload/tech_03.jpg" %}" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-orange"><a href="tech-category-01.html" title="">Technology</a></span>
-                                        <h4><a href="tech-single.html" title="">The most reliable Galaxy Note 8 images leaked</a></h4>
-                                        <small><a href="tech-single.html" title="">01 July, 2017</a></small>
-                                        <small><a href="tech-author.html" title="">by Jessica</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                             </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                    </div><!-- end second-side -->
-                </div><!-- end masonry -->
-            </div>
-        </section>
+{% comment %} end banner {% endcomment %}
+
+
+
 
 
 
