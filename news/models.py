@@ -14,10 +14,11 @@ class News(models.Model):
   created_time=models.DateField(auto_now=False, auto_now_add=True)
   updated_time=models.DateField(auto_now=True, auto_now_add=False)
   active=models.BooleanField(default=False)
-  author=models.ForeignKey(user,on_delete=models.CASCADE,blank=False)
   # relations
+  author=models.ForeignKey(user,on_delete=models.CASCADE,blank=False)
   category=models.ManyToManyField("Category")
-  # tags=
+  tag=models.ManyToManyField("Tag")
+  # fixing create and updated time
   # slug=
 
   def __str__(self) -> str:
@@ -28,6 +29,8 @@ class News(models.Model):
     ordering=['-created_time']
     verbose_name = 'New'
     verbose_name_plural = 'News'
+
+
 
 
 
@@ -58,3 +61,11 @@ class Comment(models.Model):
   class Meta:
     ordering=['-created_time',]
 
+
+
+
+class Tag(models.Model):
+  title=models.CharField(max_length=100)
+  
+  def __str__(self):
+    return self.title

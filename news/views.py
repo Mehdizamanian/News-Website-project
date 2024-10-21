@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 def NewsListView(request,*args, **kwargs):
-  news=News.objects.filter(active=True)
+  news=News.objects.filter(active=True).order_by('-created_time')
 
   if kwargs.get('author'):
     news=news.filter(author__username=kwargs['author'])
@@ -19,6 +19,8 @@ def NewsListView(request,*args, **kwargs):
   if kwargs.get('category'):
     news=news.filter(category__title=kwargs['category'])
 
+  if kwargs.get('tag'):
+    news=news.filter(tag__title=kwargs['tag'])
 
   search=request.GET.get('q')
   if search:

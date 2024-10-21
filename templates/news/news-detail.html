@@ -91,11 +91,17 @@
 
                      <!-- tags single page -->
                      <div class="tag-cloud-single">
-                        <span>Tags not created yet </span>
+                        <span>Tags </span>
 
-                        {% for cat in new.category.all %}
-                        <small><a href=" {% url "news:category" category=cat.title %} ">{{cat.title}}</a></small>
+                        {% for tag in new.tag.all  %}
+                        <small><a href="{% url "news:tag" tag=tag.title %}"># {{tag.title}}</a></small>
                         {% endfor %}
+
+
+
+                        {% comment %} {% for cat in new.category.all %}
+                        <small><a href=" {% url "news:category" category=cat.title %} ">{{cat.title}}</a></small>
+                        {% endfor %} {% endcomment %}
 
                     </div>
                     
@@ -342,7 +348,7 @@
 {% comment %} {% category %} {% endcomment %}
 {% comment %} {% category %} {% endcomment %}
 <hr/>
-{% include "news/includes/news-tag-file.html" %}
+{% show_all_tags %}
 
 
 

@@ -1,0 +1,123 @@
+{% load news_tags %}
+{% comment %} 
+<div class="widget">
+  <h2 class="widget-title">All Categories </h2>
+  
+  <div class="blog-list-widget">
+      <div class="list-group">
+          <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="w-100 justify-content-between">
+                  <img src="./" alt="" class="img-fluid float-left"> {% endcomment %}
+
+
+                  {% comment %} <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5> {% endcomment %}
+
+
+                  {% comment %} {% for new in news %}
+
+                   {% for cat in new.category.all %}
+               
+
+                  <small class="firstsmall"><a class="bg-orange" href="{% url "news:category" category=cat.title %}" title="">{{cat.title}}</a></small>     
+
+                  {% endfor %} 
+
+
+                  {% endfor %} {% endcomment %}
+
+                  <ul>
+
+                    {% for cat,num in categories_count.items %}
+                    <li>
+
+                        <a href="{% url "news:category" category=cat.title %}">{{cat}}:{{num}}</a>
+
+                    </li>
+                    
+                    {% endfor %}
+   
+                  </ul>
+
+
+
+
+
+{% comment %} 
+
+{% for cat in categories %}
+<small class="firstsmall"><a class="bg-orange" href="{% url "news:category" category=cat.title %}" title="">{{cat.title}}</a></small>     
+{% endfor %} {% endcomment %}
+
+
+
+
+
+              </div>
+          </a>
+
+          {% load news_tags %}
+
+<div class="widget">
+  <h2 class="widget-title">All Tags</h2>
+  
+  <div class="blog-list-widget">
+      <div class="list-group">
+          {% comment %} <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="w-100 justify-content-between">
+                  <img src="./" alt="" class="img-fluid float-left"> {% endcomment %}
+
+
+                  {% comment %} <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5> {% endcomment %}
+
+
+                  {% comment %} {% for new in news %}
+
+                   {% for cat in new.category.all %}
+               
+
+                  <small class="firstsmall"><a class="bg-orange" href="{% url "news:category" category=cat.title %}" title="">{{cat.title}}</a></small>     
+
+                  {% endfor %} 
+
+
+                  {% endfor %} {% endcomment %}
+
+                  <ul>
+
+                    {% for tag in tags%}
+                    <li>
+
+                        <a href="{% url "news:tag" tag=tag.title %}">{{tag.title}}</a>
+
+                    </li>
+                    
+                    {% endfor %}
+   
+                  </ul>
+
+
+
+
+
+{% comment %} 
+
+{% for cat in categories %}
+<small class="firstsmall"><a class="bg-orange" href="{% url "news:category" category=cat.title %}" title="">{{cat.title}}</a></small>     
+{% endfor %} {% endcomment %}
+
+
+
+
+              </div>
+          </a>
+
+                
+
+      </div>
+  </div><!-- end blog-list -->
+</div><!-- end widget -->
+      
+
+      </div>
+  </div><!-- end blog-list -->
+</div><!-- end widget -->

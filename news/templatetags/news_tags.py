@@ -1,5 +1,5 @@
 from django import template
-from ..models import News , Category
+from ..models import News , Category ,Tag
 
 
 register = template.Library()
@@ -48,5 +48,11 @@ def categories():
 def recent_post():
   news=News.objects.filter(active=True).order_by('-id')[:2]
   return {'news':news}
+
+
+@register.inclusion_tag('news/includes/news-all-tags.html')
+def show_all_tags():
+  tags=Tag.objects.all()
+  return {'tags':tags}
 
 
