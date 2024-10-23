@@ -4,21 +4,22 @@
 
 {% for new in news %}
 
-
+<a href="{% url "news:detail" num=new.id %}"> 
 <div class="second-slot">
   <div class="masonry-box post-media">
-       <img style="width:360px;height:410px" src="{{new.image.url}}" alt="" class="img-fluid">
+      <a href="{% url "news:detail" num=new.id %}"> 
+        <img style="width:360px;height:410px" src="{{new.image.url}}" alt="" class="img-fluid" /></a>
        <div class="shadoweffect">
           <div class="shadow-desc">
               <div class="blog-meta">
-                  <span class="bg-orange"><a href="tech-category-01.html" title="">{{new.title}}</a></span>
-                  <h4><a href="tech-single.html" title="">{{new.brif_description|truncatechars:35}}</a></h4>
-                  <small><a href="tech-single.html" title="">{{new.created_time}}</a></small>
-                  <small><a href="tech-author.html" title="">{{new.author}}</a></small>
+                  <span class="bg-orange"><a href="{% url "news:detail" num=new.id %}" title="">{{new.title}}</a></span>
+                  <h4><a href="{% url "news:detail" num=new.id %}" title="">{{new.brif_description|truncatechars:35}}</a></h4>
+                  <small><a title="">{{new.created_time}}</a></small>
+                  <small><a href="{% url "news:author" author=new.author %}" title="">{{new.author}}</a></small>
               </div><!-- end meta -->
           </div><!-- end shadow-desc -->
        </div><!-- end shadow -->
   </div><!-- end post-media -->
 </div>
-
+</a>
 {% endfor %}
