@@ -9230,6 +9230,13 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   display: none !important;
 }
 
+
+.pagebg{
+  background-color:#025aa5;
+}
+
+
+
 @media (max-width: 575px) {
   .hidden-xs-down {
     display: none !important;
