@@ -2,8 +2,13 @@ from django.shortcuts import render ,get_object_or_404, redirect
 from .models import News ,Comment
 from .forms import CommentForm
 from django.contrib import messages
+from django.db.models import Q
 
-from django.views.generic import ListView
+from django.views.generic import ListView ,DeleteView ,UpdateView , DetailView ,CreateView
+from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
+
 
 
 
@@ -25,7 +30,7 @@ def news_list(request,*args, **kwargs):
 
   search=request.GET.get('q')
   if search:
-    news=news.filter(title__icontains=search)
+    news=news.filter( Q(title__icontains=search) | Q(brif_description__icontains=search)|Q(description__icontains=search))
 
 
   context={'news':news}
@@ -65,6 +70,30 @@ class AdminPannel(ListView):
   # def get_queryset(self):
   #     news=News.objects.all()
   #     return {'news':news}
+
+
+class AdminDetail(DeleteView):
+  model=News
+  context_object_name='new'
+  template_name='news/admin-news/admin-detail.html'
+
+
+class AdminUpadte(SuccessMessageMixin,UpdateView):
+  model=News
+  context_object_name='new'
+  fields='__all__'
+  template_name='news/admin-news/admin-form.html'
+  success_url=reverse_lazy('news:dashboard')
+  success_message = "one new updated successfully "
+
+
+  # class AdminCreate(SuccessMessageMixin,CreateView):
+  # model=News
+  # context_object_name='news'
+  # fields='__all__'
+  # template_name='news/admin-news/admin-form.html'
+  # success_url=reverse_lazy('news:dashboard')
+  # success_message = "one new created "
   
 
 

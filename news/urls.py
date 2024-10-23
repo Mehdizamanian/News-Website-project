@@ -2,7 +2,7 @@
 News urls.py
 """
 from django.urls import path
-from.views import news_list , news_detail , AdminPannel
+from.views import news_list , news_detail , AdminPannel ,AdminDetail,AdminUpadte
 
 app_name="news"
 
@@ -15,4 +15,6 @@ urlpatterns = [
     path('detail/<int:num>/', news_detail,name="detail"),
     # admin
     path('dashboard/', AdminPannel.as_view(),name="dashboard"),
+    path('dashboard/detail/<int:pk>/', AdminDetail.as_view(),name="admin-detail"),
+    path('dashboard/update/<int:pk>/', AdminUpadte.as_view(),name="admin-update"),
 ]
