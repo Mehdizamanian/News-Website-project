@@ -1,6 +1,6 @@
 from django.shortcuts import render ,get_object_or_404, redirect
 from .models import News ,Comment
-from .forms import CommentForm
+from .forms import CommentForm 
 from django.contrib import messages
 from django.db.models import Q
 
@@ -94,12 +94,17 @@ class AdminDelete(SuccessMessageMixin,DeleteView):
   success_url=reverse_lazy('news:dashboard')
   success_message = "delete was successfully "
 
-  # class AdminCreate(SuccessMessageMixin,CreateView):
-  # model=News
-  # fields='__all__'
-  # template_name='news/admin-news/admin-form.html'
-  # success_url=reverse_lazy('news:dashboard')
-  # success_message = "one new created "
+
+
+class AdminCreate(SuccessMessageMixin,CreateView):
+    model = News
+    fields='__all__'
+    template_name='news/admin-news/admin-form.html'
+    success_url=reverse_lazy('news:dashboard')
+    success_message = "new added successfuly "
+
+
+  
   
 
 
