@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render ,get_object_or_404, redirect
 from .models import News ,Comment
 from .forms import CommentForm 
@@ -8,12 +9,15 @@ from django.views.generic import ListView ,DeleteView ,UpdateView , DetailView ,
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.paginator import Paginator
+from website.models import Contact
 
 
 
 
 def news_list(request,*args, **kwargs):
   news=News.objects.filter(active=True).order_by('-created_time')
+
 
   if kwargs.get('author'):
     news=news.filter(author__username=kwargs['author'])
@@ -33,7 +37,13 @@ def news_list(request,*args, **kwargs):
     news=news.filter( Q(title__icontains=search) | Q(brif_description__icontains=search)|Q(description__icontains=search))
 
 
-  context={'news':news}
+  paginator = Paginator(news, 4)  # Show 25 contacts per page.
+  page_number = request.GET.get("page")
+  new_list = paginator.get_page(page_number)
+
+
+
+  context={'news':new_list}
   return render(request,'news/news-list.html',context)
 
 
@@ -62,18 +72,21 @@ def news_detail(request,num):
 
 # Admin dashboard
 
+
+
 class AdminPannel(UserPassesTestMixin,SuccessMessageMixin,ListView):
-  model=News
-  context_object_name='news'
+  context_object_name='news'  
   template_name='news/admin-news/admin.html'
-  success_message = "welcome {{request.user}} as superuser"
+
+  def get_queryset(self):
+     news=News.objects.all()
+     return news
 
   def test_func(self):
       return self.request.user.is_superuser
 
-  # def get_queryset(self):
-  #     news=News.objects.all()
-  #     return {'news':news}
+
+
 
 
 class AdminDetail(UserPassesTestMixin,DeleteView):
