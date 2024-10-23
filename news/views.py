@@ -80,16 +80,22 @@ class AdminDetail(DeleteView):
 
 class AdminUpadte(SuccessMessageMixin,UpdateView):
   model=News
-  context_object_name='new'
   fields='__all__'
   template_name='news/admin-news/admin-form.html'
   success_url=reverse_lazy('news:dashboard')
   success_message = "one new updated successfully "
 
 
+class AdminDelete(SuccessMessageMixin,DeleteView):
+  model=News
+  fields='__all__'
+  context_object_name='new'
+  template_name='news/admin-news/admin-delete.html'
+  success_url=reverse_lazy('news:dashboard')
+  success_message = "delete was successfully "
+
   # class AdminCreate(SuccessMessageMixin,CreateView):
   # model=News
-  # context_object_name='news'
   # fields='__all__'
   # template_name='news/admin-news/admin-form.html'
   # success_url=reverse_lazy('news:dashboard')

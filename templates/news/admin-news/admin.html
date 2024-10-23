@@ -24,7 +24,7 @@
 
 
       
-     <a href="#" style="color:white">Add new </a> 
+     {% comment %} <a href="{% url "news:admin-create" pk=new.id %}" style="color:white">Add new </a>  {% endcomment %}
       <a class="btn text-white" href="{% url "accounts:logout" %}">logout</a>
     </nav>
 
@@ -50,7 +50,7 @@
                    
                    <a href="{% url "news:admin-update" pk=new.id %}"><button type="button" class="btn btn-sm btn-outline-secondary bg-warning text-dark">Edit</button></a>
                    
-                  <a href="#"> <button type="button" class="btn btn-sm btn-outline-secondary bg-danger text-light">delete</button></a>
+                  <a href="{% url "news:admin-delete" pk=new.id %}"> <button type="button" class="btn btn-sm btn-outline-secondary bg-danger text-light">delete</button></a>
                   
                   
                   </div>
