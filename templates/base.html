@@ -78,8 +78,12 @@
                     </button>
 
                     <a class="navbar-brand" href="tech-index.html">
-                        <img src="{% static "images/version/tech-logo.png" %}" alt=""> 
-                    
+
+
+                        
+                         <img src="{% static "images/version/tech-logo.png" %}" alt=""> 
+                          
+                       
                     </a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
@@ -417,6 +421,9 @@
                                 <a class="nav-link" href="{% url "website:contact" %}">Contact Us</a>
                             </li>
 
+
+                          
+                    
 {% comment %} 
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url "website:contact" %}">Signup</a>
@@ -441,7 +448,10 @@
                             <li class="nav-item ml-3 " >
                                 {% comment %} <a style="float:right" class="nav-link " style="color:green" href="{% url "accounts:login" %}" ><li id="sabz">welcome dear <p>{{request.user}}</p><li></a>
                                      {% endcomment %}
-                                      <h2 style="display:inline ; font-size:20px;color:white" >User <span style="color:green">( {{request.user}} )</span> / </h2>
+                                     <a href="{% url "news:dashboard" %}"
+                                      <h2 style="display:inline ; font-size:20px;color:white" >
+                                        User <span style="color:green">( {{request.user}} )</span> /
+                                     </h2>
                             </li> 
 
                             <li class="nav-item " >
@@ -478,10 +488,7 @@
         </header><!-- end market-header -->
 
 
-{% comment %} banner {% endcomment %}
-{% include "news/includes/banner.html" %}
 
-{% comment %} end banner {% endcomment %}
 
 
 
