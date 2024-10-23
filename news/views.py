@@ -37,7 +37,7 @@ def news_list(request,*args, **kwargs):
     news=news.filter( Q(title__icontains=search) | Q(brif_description__icontains=search)|Q(description__icontains=search))
 
 
-  paginator = Paginator(news, 2)  # Show 25 contacts per page.
+  paginator = Paginator(news, 4)  # Show 25 contacts per page.
   page_number = request.GET.get("page")
   new_list = paginator.get_page(page_number)
 
