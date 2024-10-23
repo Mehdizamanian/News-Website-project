@@ -8,12 +8,14 @@ from django.views.generic import ListView ,DeleteView ,UpdateView , DetailView ,
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.paginator import Paginator
 
 
 
 
 def news_list(request,*args, **kwargs):
   news=News.objects.filter(active=True).order_by('-created_time')
+
 
   if kwargs.get('author'):
     news=news.filter(author__username=kwargs['author'])
@@ -33,7 +35,13 @@ def news_list(request,*args, **kwargs):
     news=news.filter( Q(title__icontains=search) | Q(brif_description__icontains=search)|Q(description__icontains=search))
 
 
-  context={'news':news}
+  paginator = Paginator(news, 2)  # Show 25 contacts per page.
+  page_number = request.GET.get("page")
+  new_list = paginator.get_page(page_number)
+
+
+
+  context={'news':new_list}
   return render(request,'news/news-list.html',context)
 
 
