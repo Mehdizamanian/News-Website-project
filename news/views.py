@@ -62,46 +62,65 @@ def news_detail(request,num):
 
 # Admin dashboard
 
-class AdminPannel(ListView):
+class AdminPannel(UserPassesTestMixin,SuccessMessageMixin,ListView):
   model=News
   context_object_name='news'
   template_name='news/admin-news/admin.html'
+  success_message = "welcome {{request.user}} as superuser"
+
+  def test_func(self):
+      return self.request.user.is_superuser
 
   # def get_queryset(self):
   #     news=News.objects.all()
   #     return {'news':news}
 
 
-class AdminDetail(DeleteView):
+class AdminDetail(UserPassesTestMixin,DeleteView):
   model=News
   context_object_name='new'
   template_name='news/admin-news/admin-detail.html'
 
+  def test_func(self):
+      return self.request.user.is_superuser
 
-class AdminUpadte(SuccessMessageMixin,UpdateView):
+
+
+
+
+class AdminUpadte(UserPassesTestMixin,SuccessMessageMixin,UpdateView):
   model=News
   fields='__all__'
   template_name='news/admin-news/admin-form.html'
   success_url=reverse_lazy('news:dashboard')
   success_message = "one new updated successfully "
+  
+  def test_func(self):
+      return self.request.user.is_superuser
 
 
-class AdminDelete(SuccessMessageMixin,DeleteView):
+class AdminDelete(UserPassesTestMixin,SuccessMessageMixin,DeleteView):
   model=News
   fields='__all__'
   context_object_name='new'
   template_name='news/admin-news/admin-delete.html'
   success_url=reverse_lazy('news:dashboard')
   success_message = "delete was successfully "
+  
+  def test_func(self):
+      return self.request.user.is_superuser
 
 
 
-class AdminCreate(SuccessMessageMixin,CreateView):
+class AdminCreate(UserPassesTestMixin,SuccessMessageMixin,CreateView):
     model = News
     fields='__all__'
     template_name='news/admin-news/admin-form.html'
     success_url=reverse_lazy('news:dashboard')
     success_message = "new added successfuly "
+    
+    def test_func(self):
+      return self.request.user.is_superuser
 
 
   
