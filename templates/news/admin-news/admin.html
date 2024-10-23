@@ -23,8 +23,8 @@
       <span class="navbar-brand mb-0 h1 text-light">{{request.user}} Dashboard</span>
 
 
-      
-     <a href="{% url "news:admin-create"%}" style="color:white">Add new </a> 
+      <a href="{% url "news:news"%}" style="color:white">Visit site Live </a> 
+     
       <a class="btn text-white" href="{% url "accounts:logout" %}">logout</a>
     </nav>
 
@@ -37,13 +37,23 @@
         {{contact.name}}
         {% endfor %}  {% endcomment %}
 
-
+<div class="container-fluid d-flex justify-content-lg-center ">
         <form method="GET" action="{% url "news:dashboard" %}">
           <input name='q' type="text" class="search-input" placeholder="Type to search">
           <button type="submit" class="search-icon" onclick="searchToggle(this, event);"><span>search</span></button>
-          <br/><br/>
+         
         </form> 
-  
+       
+
+        <a href="{% url "news:admin-create"%}" style="color:white;margin-top:-4px;display:inline;height:40px" class="btn bg-success ml-3">Add news + </a> 
+
+        
+
+
+      </div>
+
+
+      <br/><br/>
 
 
         <div class="row">
