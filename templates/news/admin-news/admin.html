@@ -32,6 +32,20 @@
     <div class="album py-5 bg-light">
       <div class="container">
 
+
+        {% comment %} {% for contact in contacts %}
+        {{contact.name}}
+        {% endfor %}  {% endcomment %}
+
+
+        <form method="GET" action="{% url "news:dashboard" %}">
+          <input name='q' type="text" class="search-input" placeholder="Type to search">
+          <button type="submit" class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+  
+        </form> 
+  
+
+
         <div class="row">
 
           {% for new in news %}

@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render ,get_object_or_404, redirect
 from .models import News ,Comment
 from .forms import CommentForm 
@@ -9,6 +10,7 @@ from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.paginator import Paginator
+from website.models import Contact
 
 
 
@@ -70,18 +72,21 @@ def news_detail(request,num):
 
 # Admin dashboard
 
+
+
 class AdminPannel(UserPassesTestMixin,SuccessMessageMixin,ListView):
-  model=News
-  context_object_name='news'
+  context_object_name='news'  
   template_name='news/admin-news/admin.html'
-  success_message = "welcome {{request.user}} as superuser"
+
+  def get_queryset(self):
+     news=News.objects.all()
+     return news
 
   def test_func(self):
       return self.request.user.is_superuser
 
-  # def get_queryset(self):
-  #     news=News.objects.all()
-  #     return {'news':news}
+
+
 
 
 class AdminDetail(UserPassesTestMixin,DeleteView):
